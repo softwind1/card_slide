@@ -11,12 +11,39 @@ const containerSrc_info = [
 
     {title:"HTML", version:"Version: 5B",info:"Limbaj de marcare hipertext", src_img:"img/iconHTML.png",src_btn:'img/HTML_icon.png',},
 
-    {title:"CSS", version:"Version: 22.00B",info:"Linbaj de stil în cascadă" , src_img:"img/iconCSS.png",src_btn:'img/CSS_icon.png',},
+    {title:"CSS", version:"Version: 22.00B",info:"Limbaj de stil în cascadă" , src_img:"img/iconCSS.png",src_btn:'img/CSS_icon.png',},
 
-    {title:"JavaScript", version:"Version: 19.00B",info:"Linbaj de programare" , src_img:"img/iconJS.png" ,src_btn:'img/JS_icon.png',},
+    {title:"JavaScript", version:"Version: 19.00B",info:"Limbaj de programare" , src_img:"img/iconJS.png" ,src_btn:'img/JS_icon.png',},
     
 
 ];
+
+// containerSrc_info.forEach(element => {
+//  if (element.info.includes("hipertext")) {
+  
+//   console.log(element);
+//  }
+// })
+
+// containerSrc_info.forEach(element => {
+//   if (element.version === "Version: 5B") {
+   
+//     console.log(element);
+//     }
+//  })
+
+containerSrc_info.filter(element =>{
+//   if (element.version === "Version: 5B") {
+   
+
+element.info === "Limbaj de programare" ? console.log(element) : null
+//         console.log(element);}
+//   if (element.version.includes("hipertext")) {
+  
+//             console.log(element);
+//   }
+})
+
 
  containerSrc_info.forEach(element => {
     const img = document.createElement("img");
@@ -29,7 +56,8 @@ const containerSrc_info = [
   footerDecoration.className ="footer_cont_decoration";
   container.append(footerDecoration)
 
-    
+  
+
   containerSrc_info.forEach(item => {
     const divContainer = document.createElement("div");
     const img = document.createElement("img");
@@ -50,9 +78,36 @@ const containerSrc_info = [
     slideContainer.append(divContainer)
   } )
 
-//   const buttons = document.querySelectorAll('.btn')
+  const buttons = document.querySelectorAll('.btn')
+  // console.log(buttons);
+  const cardsStyle = [
+    {position: '600px', color: '#EFADC3FF'},
+    {position: '0', color: '#9392E2FF'},
+    {position: '-800px', color: '#EDE34DFF'},
 
-//   const
+  ];
+
+  const initialPosition =() => {
+    buttons[2].classList.add('active');
+    body.style.backgroundColor = cardsStyle[2].color;
+    slideContainer.style.marginLeft = cardsStyle[2].position;
+  }
+  initialPosition()
+
+  const slideshow = () => {
+  
+    buttons.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+          buttons.forEach(el => el.classList.remove('active'));
+          btn.classList.add('active');
+          body.style.backgroundColor = cardsStyle[idx].color;
+          slideContainer.style.marginLeft = cardsStyle[idx].position;
+      });
+  });
+}
+slideshow()
+
+
 
 
 
